@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Aluno } from 'src/app/models/aluno';
 
 @Component({
   selector: 'app-cadastro-aluno-template',
@@ -6,5 +7,20 @@ import { Component } from '@angular/core';
   styleUrls: ['./cadastro-aluno-template.component.css']
 })
 export class CadastroAlunoTemplateComponent {
+  aluno: Aluno = {
+    nome: '',
+    email: '',
+    descricao: '',
+    nivel: '',
+    usuarioAtivo: false,
+    endereco: {
+      cidade: '',
+      estado: ''
+    }
+  };
+
+  onSubmit() {
+    console.log('Aluno cadastrado:', this.aluno);
+  }
 
 }

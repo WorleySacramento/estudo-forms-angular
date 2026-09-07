@@ -1,1 +1,72 @@
 <p>cadastro-aluno-template works!</p>
+<form class="container my-5">
+    <div class="mb-3">
+    <label for="nome" class="form-label">Nome completo</label>
+    <input type="email" class="form-control" 
+    id="nome" name="nome" 
+    [(ngModel)]="aluno.nome">
+  </div>
+
+  <div class="mb-3">
+    <label for="email" class="form-label">Email address</label>
+    <input type="email" 
+    class="form-control" 
+    id="email" 
+    nome="email" [(ngModel)]="aluno.email">
+  </div>
+
+  <div class="mb-3">
+    <label for="descricao" class="form-label">Descrição do aluno</label>
+    <textarea type="email" class="form-control"
+     id="descricao" 
+     rows="3" 
+     name="descricao" 
+     [(ngModel)]="aluno.descricao"></textarea>
+  </div>
+
+  <div class="mb-3">
+    <label for="nivel" class="form-label">Nível de ensino</label>
+   <select name="" id="nivel" 
+   class="form-select" 
+   name="nivel" [(ngModel)]="aluno.nivel">
+    <option selected disabled value="">Selecione um nível</option>
+    <option value="1">Fundamental I</option>
+    <option value="2">Fundamental II</option>
+    <option value="3">Médio</option>
+   </select>
+  </div>
+
+  <div class="mb-3">
+   <div class="form-check">
+    <input class="form-check-input" 
+    type="checkbox" 
+    name="usuario-sistema" 
+    id="usuario-sistema"
+    [(ngModel)]="aluno.usuarioAtivo"
+    />
+    <label class="form-check-label" for="usuario-sistema">Usuário do sistema?</label>
+   </div>
+  </div>
+
+  <div class="mb-3">
+    <label for="senha" class="form-label">Password</label>
+    <input type="password" 
+    class="form-control" 
+    id="senha" name="senha" 
+    [(ngModel)]="aluno.senha">
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label" for="cidade">Cidade</label>
+    <input class="form-control" type="text"
+     id="cidade" name="cidade" [(ngModel)]="aluno.endereco.cidade">
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label" for="estado">Estado</label>
+    <input class="form-control" 
+    type="text"
+    id="estado" name="estado" [(ngModel)]="aluno.endereco.estado">
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
