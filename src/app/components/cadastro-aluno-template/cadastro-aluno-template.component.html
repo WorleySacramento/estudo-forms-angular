@@ -1,10 +1,17 @@
 <p>cadastro-aluno-template works!</p>
-<form class="container my-5">
+<p>
+    {{aluno | json}}
+</p>
+
+<form #form="ngForm" (ngSubmit)="onSubmit()" class="container my-5">
     <div class="mb-3">
     <label for="nome" class="form-label">Nome completo</label>
     <input type="email" class="form-control" 
     id="nome" name="nome" 
-    [(ngModel)]="aluno.nome">
+    [(ngModel)]="aluno.nome"
+    minlength="8"
+    required
+    >
   </div>
 
   <div class="mb-3">
@@ -12,7 +19,9 @@
     <input type="email" 
     class="form-control" 
     id="email" 
-    nome="email" [(ngModel)]="aluno.email">
+    nome="email" [(ngModel)]="aluno.email"
+    required
+    >
   </div>
 
   <div class="mb-3">
@@ -21,14 +30,20 @@
      id="descricao" 
      rows="3" 
      name="descricao" 
-     [(ngModel)]="aluno.descricao"></textarea>
+     [(ngModel)]="aluno.descricao"
+     minlength="30"
+     maxlength="140"
+     required
+     ></textarea>
   </div>
 
   <div class="mb-3">
     <label for="nivel" class="form-label">Nível de ensino</label>
    <select name="" id="nivel" 
    class="form-select" 
-   name="nivel" [(ngModel)]="aluno.nivel">
+   name="nivel" [(ngModel)]="aluno.nivel"
+   required
+   >
     <option selected disabled value="">Selecione um nível</option>
     <option value="1">Fundamental I</option>
     <option value="2">Fundamental II</option>
@@ -48,25 +63,32 @@
    </div>
   </div>
 
-  <div class="mb-3">
+  <div class="mb-3" *ngIf="aluno.usuarioAtivo">
     <label for="senha" class="form-label">Password</label>
     <input type="password" 
     class="form-control" 
     id="senha" name="senha" 
-    [(ngModel)]="aluno.senha">
+    [(ngModel)]="aluno.senha"
+    required
+    >
   </div>
 
   <div class="mb-3">
     <label class="form-label" for="cidade">Cidade</label>
     <input class="form-control" type="text"
-     id="cidade" name="cidade" [(ngModel)]="aluno.endereco.cidade">
+     id="cidade" name="cidade" 
+     [(ngModel)]="aluno.endereco.cidade" 
+     required>
   </div>
 
   <div class="mb-3">
     <label class="form-label" for="estado">Estado</label>
     <input class="form-control" 
     type="text"
-    id="estado" name="estado" [(ngModel)]="aluno.endereco.estado">
+    id="estado" name="estado" 
+    [(ngModel)]="aluno.endereco.estado" 
+    required minlength="2" 
+    maxlength="2">
   </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button [disabled]="form.invalid" type="submit" class="btn btn-primary">Submit</button>
 </form>
