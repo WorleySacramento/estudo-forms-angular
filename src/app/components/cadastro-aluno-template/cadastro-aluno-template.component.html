@@ -6,12 +6,19 @@
 <form #form="ngForm" (ngSubmit)="onSubmit()" class="container my-5">
     <div class="mb-3">
     <label for="nome" class="form-label">Nome completo</label>
-    <input type="email" class="form-control" 
+    <input type="email" class="form-control" [ngClass]="{
+        'is-valid':nome.valid,
+        'is-invalid': nome.invalid && nome.touched
+    }"
     id="nome" name="nome" 
     [(ngModel)]="aluno.nome"
+    #nome="ngModel"
     minlength="8"
     required
     >
+    <div *ngIf="nome.touched && nome.invalid" class="invalid-feedback">
+        Nome inválido
+    </div>
   </div>
 
   <div class="mb-3">
