@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
 
 @Component({
   selector: 'app-cadastro-aluno-reactive',
@@ -10,12 +10,20 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class CadastroAlunoReactiveComponent {
   form: FormGroup = new FormGroup({
     nome: new FormControl('', [Validators.required, Validators.minLength(8)]),
-    email: new FormControl('', [Validators.required, Validators.email]),
+    email: new FormControl('', [Validators.required, Validators.email, this.emailEscolar]),
     nivel: new FormControl('', [Validators.required]),
 
     cidade: new FormControl('', [Validators.required]),
     estado: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(2)]),
   });
+
+  emailEscolar(control: AbstractControl): ValidationErrors | null {
+    const email = control.value;
+    if (email && !email.endsWith('@escola.com')) {
+      return { emailEscolar: true };
+    }
+    return null;
+  }
 
   get nome() {
     return this.form.get('nome')!;
