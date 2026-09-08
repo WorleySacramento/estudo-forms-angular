@@ -17,9 +17,29 @@ export class CadastroAlunoReactiveComponent {
     estado: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(2)]),
   });
 
+  get nome() {
+    return this.form.get('nome')!;
+  }
+
+  get email() {
+    return this.form.get('email')!;
+  }
+
+  get nivel() {
+    return this.form.get('nivel')!;
+  }
+
+  get cidade() {
+    return this.form.get('cidade')!;
+  }
+
+  get estado() {
+    return this.form.get('estado')!;
+  }
+
   onSubmit() {
   
-      console.log('Aluno cadastrado:', this.form.valid);
+      console.log('Aluno cadastrado:', this.form.value);
       // Aqui você pode adicionar a lógica para enviar os dados do aluno para um serviço ou API
   }
 

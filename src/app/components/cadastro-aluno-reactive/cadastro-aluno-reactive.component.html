@@ -4,10 +4,11 @@
     <!-- {{ | json}} -->
 </p>
 
-<form class="container my-5">
-    <div class="mb-3">
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="container my-5">
+    <div  class="mb-3">
     <label for="nome" class="form-label">Nome completo</label>
     <input type="email" class="form-control"
+    formControlName="nome"
     id="nome" name="nome" 
     minlength="8"
     required
@@ -18,7 +19,8 @@
   <div class="mb-3">
     <label for="email" class="form-label">Email address</label>
     <input type="email" 
-    class="form-control" 
+    class="form-control"
+    formControlName="email" 
     id="email" 
     nome="email" 
     required
@@ -28,8 +30,8 @@
   <div class="mb-3">
     <label for="nivel" class="form-label">Nível de ensino</label>
    <select name="" id="nivel" 
-   class="form-select" 
-
+   class="form-select"
+   formControlName="nivel"
    required
    >
     <option selected disabled value="">Selecione um nível</option>
@@ -43,6 +45,7 @@
     <label class="form-label" for="cidade">Cidade</label>
     <input class="form-control" type="text"
      id="cidade" name="cidade" 
+     formControlName="cidade"
      required>
   </div>
 
@@ -50,8 +53,9 @@
     <label class="form-label" for="estado">Estado</label>
     <input class="form-control" 
     type="text"
-    id="estado" name="estado"  
+    id="estado" name="estado"
+    formControlName="estado"
     maxlength="2">
   </div>
-  <button  type="submit" class="btn btn-primary">Submit</button>
+  <button [disabled]="form.invalid" type="submit" class="btn btn-primary">Submit</button>
 </form>
