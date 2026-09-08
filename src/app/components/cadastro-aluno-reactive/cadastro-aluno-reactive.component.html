@@ -7,13 +7,21 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()" class="container my-5">
     <div  class="mb-3">
     <label for="nome" class="form-label">Nome completo</label>
-    <input type="email" class="form-control"
+    <input type="text" class="form-control"
     formControlName="nome"
-    id="nome" name="nome" 
-    minlength="8"
-    required
+    [ngClass]="{
+        'is-valid': nome.valid,
+        'is-invalid': nome.invalid && nome.touched
+    }"
+    id="nome"
+
     >
-    
+    <div class="invalid-feedback" *ngIf="nome.touched && nome.invalid">
+        Nome inválido
+    </div>
+     <div class="valid-feedback" *ngIf="nome.valid">
+        Nome inválido
+    </div>
   </div>
 
   <div class="mb-3">

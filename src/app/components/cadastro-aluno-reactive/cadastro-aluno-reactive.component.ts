@@ -9,7 +9,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 export class CadastroAlunoReactiveComponent {
   form: FormGroup = new FormGroup({
-    nome: new FormControl('', [Validators.required, Validators.minLength(3)]),
+    nome: new FormControl('', [Validators.required, Validators.minLength(8)]),
     email: new FormControl('', [Validators.required, Validators.email]),
     nivel: new FormControl('', [Validators.required]),
 
